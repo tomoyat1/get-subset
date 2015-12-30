@@ -37,4 +37,4 @@ obtained_text = String.new
 argv.each do |arg|
   obtained_text << get_text_from_files( arg )
 end
-puts obtained_text.chars.sort.join.scrub.squeeze
+puts obtained_text.chars.sort.join.scrub.squeeze.gsub(/\n/, "").gsub(/\t/, "").gsub(/\ /, "")
