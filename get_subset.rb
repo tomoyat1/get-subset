@@ -1,17 +1,17 @@
 require 'optparse'
 opt = OptionParser.new
 
-if ARGV.length < 1 then
-  puts "Not enough arguments"
-  exit
-end
-
 @exclude = Array.new
 
 opt.on('--exclude VAL') do |v|
   @exclude << File.expand_path( v )
 end
 argv = opt.parse ARGV
+
+if argv.length < 1 then
+  puts "usage: ruby ./get-subset <directory> [--exclude directory]"
+  exit
+end
 
 def get_text_from_files(target_dir)
   text = String.new
